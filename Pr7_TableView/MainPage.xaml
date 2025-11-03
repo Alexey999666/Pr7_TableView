@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Pr7_TableView.MainPage"
+             BackgroundImageSource="chaos.png" >
+
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="30,0"
+            Spacing="25">
+            <TableView BackgroundColor="AliceBlue" Opacity="0.5">
+                <TableRoot>
+                    <TableSection Title="Бланк для вступления в ряды хаоса" TextColor="DarkViolet" >
+                        <EntryCell  x:Name="ecName" Label="Имя:" Placeholder="Введите имя" LabelColor="DarkViolet"/>
+                        <EntryCell x:Name="ecFamily" Label="Фамилия" Placeholder="Введите фамилию"  LabelColor="DarkViolet" />
+                        <EntryCell x:Name="ecDopName" Label="Титул или прозвище"  Placeholder="Введите титул или прозвище" LabelColor="DarkViolet"/>
+                        <EntryCell x:Name="ecRas" Label="Раса"  Placeholder="Введите расу" LabelColor="DarkViolet"/>
+                        <EntryCell x:Name="ecWorld"  Label="Родной мир"  Placeholder="Введите родной мир" LabelColor="DarkViolet" />
+                        <ViewCell >
+                            <StackLayout Orientation="Horizontal" Margin="15,0">
+                                <Label VerticalOptions="Center" Text="Возраст: " TextColor="DarkViolet"/>
+                                <Label 
+                                
+                            </StackLayout>
+                        </ViewCell>
+                    </TableSection>
+                </TableRoot>
+            </TableView>
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

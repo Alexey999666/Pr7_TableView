@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="Pr7_TableView.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:Pr7_TableView"
+    Shell.FlyoutBehavior="Disabled"
+    Title="Pr7_TableView">
+
+    <ShellContent
+        Title="Бланк для вступления в ряды хаоса"
+        ContentTemplate="{DataTemplate local:MainPage}"
+        Route="MainPage" />
+
+</Shell>
