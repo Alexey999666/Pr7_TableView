@@ -9,19 +9,32 @@
         <VerticalStackLayout
             Padding="30,0"
             Spacing="25">
-            <TableView BackgroundColor="AliceBlue" Opacity="0.5">
+            <TableView BackgroundColor="AliceBlue" Opacity="0.5"  HeightRequest="600">
                 <TableRoot>
                     <TableSection Title="Бланк для вступления в ряды хаоса" TextColor="DarkViolet" >
-                        <EntryCell  x:Name="ecName" Label="Имя:" Placeholder="Введите имя" LabelColor="DarkViolet"/>
+                        <EntryCell  x:Name="ecName" Keyboard="Text" Label="Имя:" Placeholder="Введите имя" LabelColor="DarkViolet" />
                         <EntryCell x:Name="ecFamily" Label="Фамилия" Placeholder="Введите фамилию"  LabelColor="DarkViolet" />
                         <EntryCell x:Name="ecDopName" Label="Титул или прозвище"  Placeholder="Введите титул или прозвище" LabelColor="DarkViolet"/>
                         <EntryCell x:Name="ecRas" Label="Раса"  Placeholder="Введите расу" LabelColor="DarkViolet"/>
                         <EntryCell x:Name="ecWorld"  Label="Родной мир"  Placeholder="Введите родной мир" LabelColor="DarkViolet" />
-                        <ViewCell >
-                            <StackLayout Orientation="Horizontal" Margin="15,0">
-                                <Label VerticalOptions="Center" Text="Возраст: " TextColor="DarkViolet"/>
-                                <Label 
+                        <ViewCell  >
+                            <StackLayout  >
+                                <StackLayout Orientation="Horizontal" Margin="15,0,0,0" >
+                                    <Label VerticalOptions="Center" Text="Возраст: " TextColor="DarkViolet"/>
+                                    <Label x:Name="lblAge" Text="18"  VerticalOptions="Center"  TextColor="DarkViolet"/>
+                                    <Stepper x:Name="stAge" Minimum="0" Maximum="10000" Value="18" Increment="1" ValueChanged="stAge_ValueChanged"   MinimumHeightRequest="50"/>
+                                </StackLayout>
+
                                 
+                            </StackLayout>
+                            
+                        </ViewCell >
+
+                        <EntryCell x:Name="ecSpeshial" Label="Специализация:" Placeholder="Введите свою специализацию"  LabelColor="DarkViolet" />
+                        <SwitchCell Text="Псайкер?" On="False" OnColor="DarkViolet"  />
+                        <ViewCell >
+                            <StackLayout Orientation="Horizontal"  Margin="10,0,0,0" >
+                                <Label Text="Кому поклоняешься?" TextColor="DarkViolet" Margin="5,0,0,0"/>
                             </StackLayout>
                         </ViewCell>
                     </TableSection>
