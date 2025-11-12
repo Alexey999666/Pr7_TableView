@@ -9,7 +9,7 @@
         <VerticalStackLayout
             Padding="30,0"
             Spacing="25">
-            <TableView BackgroundColor="AliceBlue" Opacity="0.5"  HeightRequest="600">
+            <TableView BackgroundColor="AliceBlue" Opacity="0.5" >
                 <TableRoot>
                     <TableSection Title="Бланк для вступления в ряды хаоса" TextColor="DarkViolet" >
                         <EntryCell  x:Name="ecName" Keyboard="Text" Label="Имя:" Placeholder="Введите имя" LabelColor="DarkViolet" />
@@ -17,6 +17,8 @@
                         <EntryCell x:Name="ecDopName" Label="Титул или прозвище"  Placeholder="Введите титул или прозвище" LabelColor="DarkViolet"/>
                         <EntryCell x:Name="ecRas" Label="Раса"  Placeholder="Введите расу" LabelColor="DarkViolet"/>
                         <EntryCell x:Name="ecWorld"  Label="Родной мир"  Placeholder="Введите родной мир" LabelColor="DarkViolet" />
+                        <EntryCell x:Name="ecFracia"  Label="Прошлая фракция"  Placeholder="Введите фракцию" LabelColor="DarkViolet" />
+                        <EntryCell x:Name="ecSpeshial" Keyboard="Text" Label="Специализация" Placeholder="Введите специализацию"  LabelColor="DarkViolet" />
                         <ViewCell  >
                             <StackLayout  >
                                 <StackLayout Orientation="Horizontal" Margin="15,0,0,0" >
@@ -30,12 +32,44 @@
                             
                         </ViewCell >
 
-                        <EntryCell x:Name="ecSpeshial" Label="Специализация:" Placeholder="Введите свою специализацию"  LabelColor="DarkViolet" />
-                        <SwitchCell Text="Псайкер?" On="False" OnColor="DarkViolet"  />
+                        
+                        <SwitchCell Text="Псайкер?" On="False" OnColor="DarkViolet" x:Name="swPsayker" />
                         <ViewCell >
                             <StackLayout Orientation="Horizontal"  Margin="10,0,0,0" >
-                                <Label Text="Кому поклоняешься?" TextColor="DarkViolet" Margin="5,0,0,0"/>
+                                <Label Text="Кому поклоняешься?" TextColor="DarkViolet" Margin="5,15,10,0"/>
+                                <Picker Title="Выберите бога" x:Name="pickerGod">
+                                    <Picker.Items>
+                                        <x:String>Нургл</x:String>
+                                        <x:String>Дзинч</x:String>
+                                        <x:String>Кхорн</x:String>
+                                        <x:String>Слаанеш</x:String>
+                                        <x:String>Хаос неделимый</x:String>
+                                        <x:String>Малал</x:String>
+                                    </Picker.Items>
+                                </Picker>
                             </StackLayout>
+                        </ViewCell>
+                        <ViewCell >
+                            <StackLayout Orientation="Horizontal"  Margin="10,0,0,0" >
+                                <Label Text="Какой служишь?" TextColor="DarkViolet" Margin="5,15,10,0"/>
+                                <Picker Title="Выберите легион" x:Name="pickerLegion">
+                                    <Picker.Items>
+                                        <x:String>Дети Императора</x:String>
+                                        <x:String>Пожиратели миров</x:String>
+                                        <x:String>Гвардия смерти</x:String>
+                                        <x:String>Тысяча сынов</x:String>
+                                        <x:String>Несущие слово</x:String>
+                                        <x:String>Железные войны</x:String>
+                                        <x:String>Повелители ночи</x:String>
+                                        <x:String>Альфа легион</x:String>
+                                        <x:String>Сыны Хоруса</x:String>
+                                        <x:String>Темные механикум</x:String>
+                                    </Picker.Items>
+                                </Picker>
+                            </StackLayout>
+                        </ViewCell>
+                        <ViewCell>
+                            <Button   Text="Вступить в ряды Хаоса" Clicked="btnChaos_Click"  TextColor="Black" />
                         </ViewCell>
                     </TableSection>
                 </TableRoot>
