@@ -2,7 +2,7 @@
 {
     public partial class MainPage : ContentPage
     {
-       
+        private string selectedImagePath;
 
         public MainPage()
         {
@@ -17,7 +17,7 @@
 
         private async void btnChaos_Click(object sender, System.EventArgs e)
         {
-            // Получаем значения из всех полей
+            
             string name = !string.IsNullOrEmpty(ecName.Text) ? ecName.Text : "Неизвестно";
             string family = !string.IsNullOrEmpty(ecFamily.Text) ? ecFamily.Text : "Неизвестно";
             string dopName = !string.IsNullOrEmpty(ecDopName.Text) ? ecDopName.Text : "Неизвестно";
@@ -27,32 +27,57 @@
             string age = lblAge.Text ?? "18";
             string speshial = !string.IsNullOrEmpty(ecSpeshial.Text) ? ecSpeshial.Text : "Неизвестно";
 
-            // Получаем значение из SwitchCell
+            
             string psayker = swPsayker.On ? "Да" : "Нет";
 
-            // Получаем значения из Picker'ов
+            
             string god = !string.IsNullOrEmpty(pickerGod.SelectedItem?.ToString()) ?
                         pickerGod.SelectedItem.ToString() : "Не выбран";
 
             string legion = !string.IsNullOrEmpty(pickerLegion.SelectedItem?.ToString()) ?
                            pickerLegion.SelectedItem.ToString() : "Не выбран";
 
-            // Создаем сообщение со всеми данными
-            string message = $"Заявка на вступление в ряды Хаоса:\n\n" +
-                            $"Имя: {name}\n" +
-                            $"Фамилия: {family}\n" +
-                            $"Титул или прозвище: {dopName}\n" +
-                            $"Раса: {ras}\n" +
-                            $"Родной мир: {world}\n" +
-                            $"Прошлая фракция: {fractia}\n" +
-                            $"Возраст: {age}\n" +
-                            $"Специализация: {speshial}\n" +
-                            $"Псайкер: {psayker}\n" +
-                            $"Бог хаоса: {god}\n" +
-                            $"Легион: {legion}";
+            string photoInfo = !string.IsNullOrEmpty(selectedImagePath) ?
+                         $"Фото: {Path.GetFileName(selectedImagePath)}" : "Фото не выбрано";
 
-            // Показываем сообщение
+            string message = $"Заявка на вступление в ряды Хаоса:\n\n" +
+                        $"Имя: {name}\n" +
+                        $"Фамилия: {family}\n" +
+                        $"Титул или прозвище: {dopName}\n" +
+                        $"Раса: {ras}\n" +
+                        $"Родной мир: {world}\n" +
+                        $"Прошлая фракция: {fractia}\n" +
+                        $"Возраст: {age}\n" +
+                        $"Специализация: {speshial}\n" +
+                        $"Псайкер: {psayker}\n" +
+                        $"Бог хаоса: {god}\n" +
+                        $"Легион: {legion}\n" +
+                        $"{photoInfo}";
+
+            
             await DisplayAlert("Заявка подана!", message, "Да здравствует Хаос!");
+        }
+
+        private async void OnPickPhoto_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var result = await FilePicker.PickAsync(new PickOptions
+                {
+                    PickerTitle = "Выберите фото адепта Хаоса",
+                    FileTypes = FilePickerFileType.Images
+                });
+
+                if (result != null)
+                {
+                    selectedImagePath = result.FullPath;
+                    selectedImage.Source = ImageSource.FromFile(selectedImagePath);
+                }
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Ошибка", $"Не удалось выбрать фото: {ex.Message}", "OK");
+            }
         }
     }
 
